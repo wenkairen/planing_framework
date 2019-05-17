@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Optionally run something like AMCL -->
+  <!-- <include file="$(find rampage_logger)/launch/rampage_amcl_diff.launch"/> -->
+  <node pkg="racecar_planning" type="cmd_vel_to_uav_cmds" respawn="false" name="cmd_vel" output="screen">
+  </node>
+  <!-- run Navigation Stack Move Base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS"/>
+    <rosparam file="$(find racecar_planning)/params/rampage_common_costmap_params.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find racecar_planning)/params/rampage_common_costmap_params.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find racecar_planning)/params/rampage_local_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find racacar_planning)/params/rampage_global_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find racecar_planning)/params/rampage_teb_planner_params.yaml" command="load"/>
+
+    <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+      <param name="planner_frequency" value="0.5" />
+      <param name="planner_patience" value="5.0" />
+
+    <param name="recovery_behavior_enabled" value="False"/>
+
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+      <param name="controller_frequency" value="0.5" />
+      <param name="controller_patience" value="15.0" />
+
+    <remap from="map" to="/map" /> <!-- This file will be wrapped with namespace so we have to remove namespace from all appearances of map (there is only one map) -->
+    <remap from="move_base_simple/goal" to="/move_base_simple/goal"/> <!-- We have only a single robot now, that is controlled via goals -->
+  </node>
+
+</launch>
+

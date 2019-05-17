@@ -1,0 +1,10 @@
+<launch>
+  <master auto="start"/>
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find racecar_planning)/map/sim_map.yaml" output="screen">
+  </node>
+  <!--- Run AMCL -->
+  <!--- We load ACML here with diff=true to support our differential drive robot -->
+  <include file="$(find amcl)/examples/amcl_diff.launch" />
+</launch>

@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/wenkai/catkin_ws/devel/include",
+        "/opt/ros/kinetic/include",
+        "/home/wenkai/catkin_ws/src/ros_final/src/ackermann_cmd_mux/include",
+        "/home/wenkai/catkin_ws/src/base_local_planner/include",
+        "/home/wenkai/catkin_ws/src/ros_final/src/racecar_simulator/include",
+        "/usr/include"
+      ],
+      "name": "Linux"
+    }
+  ]
+}

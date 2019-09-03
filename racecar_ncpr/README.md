@@ -48,9 +48,8 @@ switch to Reached state.
 ​4. Reached: Reached global goal, either exit and switch initialization
 state, or start a new navigation session and switch to Wait for Global
 Path state.
-Global Planner
---------------
 
+## Global Planner
 The global planner is based on the ROS built in planner which by default
 is Dijkstra algorithm Sec [dji], which uses breadth first search by
 given a start and goal in occupancy grid map. The global planner will
@@ -61,9 +60,7 @@ guarantee a global path if there exists, also the generated path
 comparing sampling based method is relatively smooth,which also will
 benefit our local planner.
 
-Local Planner
--------------
-
+## Local Planner
 ### Trajectory generation
 
 Local trajectory generation is based on differential flatness of race
@@ -114,8 +111,7 @@ velocity magnitude to a fixed reference velocity value, and set the
 velocity direction to be the the direction from previous pose to next
 pose.
 
-Trajectory Tracking
--------------------
+### Trajectory Tracking
 
 In simulation, we have a ros subscriber to update the current odometry
 that published from gazebo, then we use current robot state to track
@@ -124,9 +120,7 @@ process is acceleration and steering angle. In gazebo simulation, we
 convert our control input to ackermann message and send to gazebo
 simulation to control robot.
 
-Replanning switch problem
--------------------------
-
+### Replanning switch problem
 In every iteration, when replanning required, we have to compute next
 local trajectory and switch to that trajectory, if we do all this things
 in one single thread, the tracking module will have to wait for new
@@ -135,9 +129,7 @@ generating trajectory. TO handle this problem, we have dynamic
 trajectory generation and tracking running in separate threads and share
 the trajectory data between them.
 
-Experiments Results and Analysis
-================================
-
+### Experiments Results and Analysis
 The process procedures are relatively straightforward: the first step is
 to find a collision free path based on the occupancy grid map gazebo
 environment, we use Dijkstra to find relative smooth path points, Then

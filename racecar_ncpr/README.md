@@ -30,7 +30,7 @@ planner in navigation. The local planner FSM has 4 states: Initializing,
 Waiting for Global Path, Running and Reached Global Goal. States
 transition in FSM is shown in Fig [FSM].
 
-![Local Planner Finite-State Machine](pics/FSM.png "fig:") [FSM]
+![Local Planner Finite-State Machine](pics/FSM.png "fig:")
 
 ​1. Initializing: Local planner initialization, connect all ROS
 subscribers and publishers, initialize variables. Once initialization
@@ -139,7 +139,7 @@ generation until the goal is reached. Fig [final] is the screen shot
 close to goal reached. The orange line is the global generated path, the
 purple line is local generated trajectory.
 
-![gazebo simulation in rviz](pics/final.png "fig:") [final]
+![final](pics/final.png "fig:")
 
 The control plot is shown in Fig [control], the red line is the
 acceleration, and the blue line is steering angle, though the controls

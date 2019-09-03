@@ -8,9 +8,9 @@ In this project, we focus on designing local planner for race car robot that dyn
 ### Dynamic model of the robot car}
 The simplified dynamics of the car is given by
 
-        x = [x, y, \theta, v]
+        $$ x = [x, y, \theta, v] $$
         
-        \dot{x} = f(x,u) = [v \cos(\theta), v \sin(\theta), v \tan(u_2)/L, u_1]
+        $$\dot{x} = f(x,u) = [v \cos(\theta), v \sin(\theta), v \tan(u_2)/L, u_1] $$
 
 where the controls are acceleration and steering angle.
 ### Differential flatness

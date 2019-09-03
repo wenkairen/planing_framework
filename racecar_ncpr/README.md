@@ -5,18 +5,21 @@ Local trajectory generation and tracking is one of the fundamental problems in r
 
 In this project, we focus on designing local planner for race car robot that dynamically generate local smooth trajectories along the global path with replanning functionality, and use feedback linearization method to control robot tracking the dynamically generated trajectory. We implemented our local planner in C++ and tested in Gazebo simulation environment. 
 ## Theory
-### Dynamic model of the robot car}
-The simplified dynamics of the car is given by
-
-        $$ x = [x, y, \theta, v] $$
-        
-        $$\dot{x} = f(x,u) = [v \cos(\theta), v \sin(\theta), v \tan(u_2)/L, u_1] $$
+### Dynamic model of the robot car
 
 where the controls are acceleration and steering angle.
 ### Differential flatness
 Consider the problem of generating a trajectory between two given states
-$$
-\dot{x}=f(x, u), \quad x(0)=x_{0}, x(T)=x_{f}
-$$
+
 The boundary conditions of a differentially flat systems are expressed as
-$$
+
+## Control law
+The feedback linearization method is applied to design a control law for
+generated trajectory $(x(t), y(t))$ let us set the states to be the
+form below:
+
+Tracking with feedback is much more desirable in order to have
+robustness.Assume that we can measure the position (x1, x2) and we would
+like to track it. We specify that by the output
+
+We differentiate the output $y$ till obtain the controls

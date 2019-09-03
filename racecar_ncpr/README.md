@@ -140,6 +140,7 @@ close to goal reached. The orange line is the global generated path, the
 purple line is local generated trajectory.
 
 ![final](pics/final.png "fig:")
+*final result*
 
 The control plot is shown in Fig [control], the red line is the
 acceleration, and the blue line is steering angle, though the controls

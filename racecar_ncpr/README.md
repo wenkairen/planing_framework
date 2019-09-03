@@ -23,3 +23,28 @@ robustness.Assume that we can measure the position (x1, x2) and we would
 like to track it. We specify that by the output
 
 We differentiate the output $y$ till obtain the controls
+
+## System design
+Our project used a finite-state machine(FSM) to control the local
+planner in navigation. The local planner FSM has 4 states: Initializing,
+Waiting for Global Path, Running and Reached Global Goal. States
+transition in FSM is shown in Fig [FSM].
+
+![Local Planner Finite-State Machine](pics/FSM.png "fig:") [FSM]
+
+​1. Initializing: Local planner initialization, connect all ROS
+subscribers and publishers, initialize variables. Once initialization
+finished, switch state to Waiting for Global Path state.
+
+​2. Wait for Global Path: Local Planner initialized, waiting for global
+path message, once the global path topic callback function is called and
+received valid global path, switch to Running state.
+
+​3. Running: For the received global path, dynamically look ahead and
+generate trajectory while tracking the trajectory using feedback
+linearization in the same time. Once Reached Global in given threshold,
+switch to Reached state.
+
+​4. Reached: Reached global goal, either exit and switch initialization
+state, or start a new navigation session and switch to Wait for Global
+Path state.
